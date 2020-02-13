@@ -1,10 +1,15 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'node'
+    }
+
+  }
   stages {
-    stage('Build') {
+    stage('build') {
       steps {
         withGradle() {
-          findBuildScans()
+          sh 'sh \'./gradlew build\''
         }
 
       }
